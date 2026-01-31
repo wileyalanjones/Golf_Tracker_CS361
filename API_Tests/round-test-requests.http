@@ -1,0 +1,29 @@
+### Request 1: Create a round (Correct)
+POST http://localhost:3000/rounds HTTP/1.1
+content-type: application/json
+
+{
+    "date": "1/31/2026",
+    "course": "697e7a1624d6aa15accd91e0",
+    "strokes": 80,
+    "score": 8  
+}
+
+### Request 2: Retrieve all
+GET http://localhost:3000/rounds HTTP/1.1
+
+### Request 3: Create a round (Incorrect)
+POST http://localhost:3000/rounds HTTP/1.1
+content-type: application/json
+
+{
+    "date": "1/31/2026",
+    "course": "697e7a1624d6aa15accd91e0",
+    "strokes": 80,
+    "score": 9
+}
+
+### Request 4: Delete a round
+@ROUND_ID = 697e7d3f8a7cd6a687b18df7
+
+DELETE http://localhost:3000/rounds/{{ROUND_ID}} HTTP/1.1

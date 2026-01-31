@@ -11,9 +11,14 @@ const getCourses = async (req, res) => {
     res.json(courses);
 }
 
+const getCourseByID = async (req, res) => {
+    const course = await Courses.findById({_id: req.params.id})
+    res.json(course)
+}
+
 const deleteCourse = async (req, res) => {
     const courseDeleted = await Courses.deleteOne({_id: req.params.id});
     res.status(204).json(courseDeleted);
 }
 
-export { createCourse, getCourses, deleteCourse }
+export { createCourse, getCourses, deleteCourse, getCourseByID }

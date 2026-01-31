@@ -1,4 +1,4 @@
-### Request 1: Create a club (Correct)
+### Request 1: Create a course (Correct)
 POST http://localhost:3000/courses HTTP/1.1
 content-type: application/json
 
@@ -13,7 +13,7 @@ content-type: application/json
 ### Request 2: Retrieve all
 GET http://localhost:3000/courses HTTP/1.1
 
-### Request 3: Create a club (Incorrect)
+### Request 3: Create a course (Incorrect)
 POST http://localhost:3000/courses HTTP/1.1
 content-type: application/json
 
@@ -25,7 +25,13 @@ content-type: application/json
     "slope": 140  
 }
 
-### Request 4: Delete a club
+### Request 4: Delete a course
 @COURSE_ID = 697d91408b715342be342b3e
 
 DELETE http://localhost:3000/courses/{{COURSE_ID}} HTTP/1.1
+
+### Request 4: Get course by ID
+@COURSE_ID_REAL = 697e7a1624d6aa15accd91e0
+
+GET http://localhost:3000/courses/{{COURSE_ID_REAL}} HTTP/1.1
+

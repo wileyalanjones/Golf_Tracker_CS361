@@ -5,13 +5,16 @@ import { validateCourse } from "../validators/validators.mjs";
 // ROUTER 
 const courseRouter = express.Router();
 
-// CREATE CLUB
+// CREATE COURSE
 courseRouter.post("/", validateCourse, courseController.createCourse);
 
-// GET CLUBS
+// GET COURSES
 courseRouter.get("/", courseController.getCourses);
 
-// DELETE CLUBS
+// GET COURSE 
+courseRouter.get("/:id", courseController.getCourseByID);
+
+// DELETE COURSE
 courseRouter.delete("/:id", courseController.deleteCourse);
 
 export default courseRouter 

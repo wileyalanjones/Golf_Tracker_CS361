@@ -8,7 +8,7 @@ const createClub = async (req, res) => {
 
 const getClubs = async (req, res) => {
     const clubs = await Clubs.find();
-    res.json(clubs);
+    res.status(200).json(clubs);
 }
 
 const deleteClub = async (req, res) => {
