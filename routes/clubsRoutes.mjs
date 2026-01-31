@@ -1,0 +1,17 @@
+import express from "express"
+import * as clubController from "../controllers/clubController.mjs"
+import { validateClub } from "../validators/clubValidators.mjs";
+
+// ROUTER 
+const clubRouter = express.Router();
+
+// CREATE CLUB
+clubRouter.post("/", validateClub, clubController.createClub);
+
+// GET CLUBS
+clubRouter.get("/", clubController.getClubs);
+
+// DELETE CLUBS
+clubRouter.delete("/:id", clubController.deleteClub);
+
+export default clubRouter 

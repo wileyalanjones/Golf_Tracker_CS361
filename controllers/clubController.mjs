@@ -1,21 +1,19 @@
 import Clubs from "../models/clubs.mjs"
 
 const createClub = async (req, res) => {
-    try {
-        const club = await Clubs.create(req.body);
-        res.status(201).json(club)
-    } 
-    catch (error) {
-        res.status(400).json({error: error.message})
-    }
+    const club = new Clubs(req.body);
+    const savedClub = await club.save();
+    res.status(201).json(savedClub)
 };
 
 const getClubs = async (req, res) => {
-    try {
-        const clubs = await Clubs.find();
-        res.json(clubs);
-    } 
-    catch (error) {
-        res.status(500).json({ error: error.message })
-    }
+    const clubs = await Clubs.find();
+    res.json(clubs);
 }
+
+const deleteClub = async (req, res) => {
+    const clubDeleted = await Clubs.deleteOne({_id: req.params.id});
+    res.status(204).json(clubDeleted);
+}
+
+export { createClub, getClubs, deleteClub }

@@ -1,0 +1,29 @@
+### Request 1: Create a club (Correct)
+POST http://localhost:3000/clubs HTTP/1.1
+content-type: application/json
+
+{
+    "type": "Driver",
+    "brand": "Ping",
+    "model": "Big Bertha",
+    "year": "2008"   
+}
+
+### Request 2: Retrieve all
+GET http://localhost:3000/clubs HTTP/1.1
+
+### Request 3: Create a club (Incorrect)
+POST http://localhost:3000/clubs HTTP/1.1
+content-type: application/json
+
+{
+    "type": "test",
+    "brand": "",
+    "model": "Big Bertha",
+    "year": "2008"   
+}
+
+### Request 4: Delete a club
+@CLUB_ID = 697d8cb3b4501b24c1857471
+
+DELETE http://localhost:3000/clubs/{{CLUB_ID}} HTTP/1.1
