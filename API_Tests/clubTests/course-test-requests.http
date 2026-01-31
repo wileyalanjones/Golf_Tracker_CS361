@@ -1,0 +1,31 @@
+### Request 1: Create a club (Correct)
+POST http://localhost:3000/courses HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Augusta National",
+    "location": "Augusta, Georgia",
+    "par": 72,
+    "distance": 7445,
+    "slope": 140    
+}
+
+### Request 2: Retrieve all
+GET http://localhost:3000/courses HTTP/1.1
+
+### Request 3: Create a club (Incorrect)
+POST http://localhost:3000/courses HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Augusta National",
+    "location": "",
+    "par": 72,
+    "distance": 7445,
+    "slope": 140  
+}
+
+### Request 4: Delete a club
+@COURSE_ID = 697d91408b715342be342b3e
+
+DELETE http://localhost:3000/courses/{{COURSE_ID}} HTTP/1.1

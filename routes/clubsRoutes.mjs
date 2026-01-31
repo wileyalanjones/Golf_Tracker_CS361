@@ -1,6 +1,6 @@
 import express from "express"
 import * as clubController from "../controllers/clubController.mjs"
-import { validateClub } from "../validators/clubValidators.mjs";
+import { validateClub } from "../validators/validators.mjs";
 
 // ROUTER 
 const clubRouter = express.Router();
