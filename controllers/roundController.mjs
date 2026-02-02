@@ -19,7 +19,7 @@ const createRound = async (req, res) => {
 };
 
 const getRounds = async (req, res) => {
-    const rounds = await Rounds.find();
+    const rounds = await Rounds.find().populate('course');
     res.json(rounds);
 }
 
