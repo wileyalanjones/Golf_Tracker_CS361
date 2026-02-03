@@ -27,3 +27,23 @@ content-type: application/json
 @ROUND_ID = 697e7d3f8a7cd6a687b18df7
 
 DELETE http://localhost:3000/rounds/{{ROUND_ID}} HTTP/1.1
+
+
+### Request 5: Update a Round
+
+@ROUND_UPDATE_ID = 698185a4f9ab71b32617d5a8
+
+PUT http://localhost:3000/rounds/{{ROUND_UPDATE_ID}} HTTP/1.1
+content-type: application/json
+
+{
+    "date": "2/2/2026",
+    "course": "697e7a1624d6aa15accd91e0",
+    "strokes": 81,
+    "score": 9  
+}
+
+### Request 6: Get Round By ID 
+@ROUND_GET_ID = 698185a4f9ab71b32617d5a8
+
+GET http://localhost:3000/rounds/{{ROUND_GET_ID}} HTTP/1.1

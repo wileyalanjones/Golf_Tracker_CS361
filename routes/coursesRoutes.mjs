@@ -17,4 +17,7 @@ courseRouter.get("/:id", courseController.getCourseByID);
 // DELETE COURSE
 courseRouter.delete("/:id", courseController.deleteCourse);
 
+// UPDATE COURSE
+courseRouter.put("/:id", courseController.updateCourse)
+
 export default courseRouter 

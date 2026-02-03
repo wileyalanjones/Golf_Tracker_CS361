@@ -3,11 +3,14 @@ import ClubContainer from '../components/ClubsContainer';
 import CoursesContainer from '../components/CoursesContainer';
 import RoundsContainer from '../components/RoundsContainer';
 import Navigation from '../components/Navigation';
+import { useNavigate } from 'react-router-dom';
 
 export default function HomePage() {
     const [clubs, setClubs] = useState([]);
     const [courses, setCourses] = useState([]);
     const [rounds, setRounds] = useState([]);
+
+    const navigate = useNavigate();
 
     const loadClubs = async () => {
         try {
@@ -85,6 +88,10 @@ export default function HomePage() {
         }
     }
 
+    const handleEdit = (type, id) => {
+        navigate(`/edit/${type}/${id}`)
+    }
+
     useEffect( () => {
         loadClubs();
         loadCourses();
@@ -94,9 +101,21 @@ export default function HomePage() {
     return (
         <>
             <Navigation courses={courses}/>
-            <ClubContainer clubs={clubs} handleDelete={handleDelete}/>
-            <RoundsContainer rounds={rounds} handleDelete={handleDelete}/>
-            <CoursesContainer courses={courses} handleDelete={handleDelete}/>
+            <ClubContainer 
+                clubs={clubs} 
+                handleDelete={handleDelete} 
+                handleEdit={handleEdit}
+                />
+            <RoundsContainer 
+                rounds={rounds} 
+                handleDelete={handleDelete} 
+                handleEdit={handleEdit}
+                />
+            <CoursesContainer 
+                courses={courses} 
+                handleDelete={handleDelete} 
+                handleEdit={handleEdit}
+                />
         </>
     )
 }

@@ -21,4 +21,18 @@ const deleteCourse = async (req, res) => {
     res.status(204).json(courseDeleted);
 }
 
-export { createCourse, getCourses, deleteCourse, getCourseByID }
+const updateCourse = async (req, res) => {
+    const id = req.params.id;
+    const updates = {
+        name: req.body.name,
+        location: req.body.location,
+        par: req.body.par,
+        distance: req.body.distance,
+        slope: req.body.slope
+    }
+    const updatedCourse = await Courses.findByIdAndUpdate(id, updates, {new: true})
+    res.status(200).json(updatedCourse)
+}
+
+
+export { createCourse, getCourses, deleteCourse, getCourseByID, updateCourse }

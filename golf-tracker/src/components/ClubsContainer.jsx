@@ -1,7 +1,7 @@
 import "../App.css"
 import ClubCard from "./ClubCard"
 
-function ClubContainer({clubs, handleDelete}) {
+function ClubContainer({clubs, handleDelete, handleEdit}) {
     return (
         <section className="clubs">
             <h2>CLUBS</h2>
@@ -15,6 +15,7 @@ function ClubContainer({clubs, handleDelete}) {
                     model={club.model}
                     year={club.year}
                     handleDelete={handleDelete}
+                    handleEdit={handleEdit}
                 />
             ))}
         </section>

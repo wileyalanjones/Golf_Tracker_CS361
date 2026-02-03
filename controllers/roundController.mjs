@@ -23,9 +23,27 @@ const getRounds = async (req, res) => {
     res.json(rounds);
 }
 
+const getRoundByID = async (req, res) => {
+    const round = await Rounds.findById({_id: req.params.id}).populate('course')
+    res.json(round)
+}
+
 const deleteRound = async (req, res) => {
     const roundDeleted = await Rounds.deleteOne({_id: req.params.id});
     res.status(204).json(roundDeleted);
 }
 
-export { createRound, getRounds, deleteRound }
+const updateRound = async (req, res) => {
+    const id = req.params.id;
+    const updates = {
+        date: req.body.date,
+        course: req.body.course._id,
+        strokes: req.body.strokes,
+        score: req.body.score
+    }
+    const updatedRound = await Rounds.findByIdAndUpdate(id, updates, {new: true})
+    res.status(200).json(updatedRound)
+}
+
+
+export { createRound, getRounds, getRoundByID, deleteRound, updateRound }

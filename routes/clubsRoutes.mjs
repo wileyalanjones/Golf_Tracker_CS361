@@ -11,6 +11,9 @@ clubRouter.post("/", validateClub, clubController.createClub);
 // GET CLUBS
 clubRouter.get("/", clubController.getClubs);
 
+// GET CLUB BY ID
+clubRouter.get('/:id', clubController.getClubByID)
+
 // DELETE CLUBS
 clubRouter.delete("/:id", clubController.deleteClub);
 

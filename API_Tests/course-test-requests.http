@@ -35,3 +35,16 @@ DELETE http://localhost:3000/courses/{{COURSE_ID}} HTTP/1.1
 
 GET http://localhost:3000/courses/{{COURSE_ID_REAL}} HTTP/1.1
 
+### Request 5: Update Course
+@COURSE_UPDATE_ID = 6981840d17e73adb5405a521
+
+PUT http://localhost:3000/courses/{{COURSE_UPDATE_ID}} HTTP/1.1
+content-type: application/json
+
+{
+    "name": "TPC Sawgrass",
+    "location": "",
+    "par": 72,
+    "distance": 7555,
+    "slope": 155  
+}

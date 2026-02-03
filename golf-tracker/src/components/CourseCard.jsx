@@ -4,7 +4,7 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import { MdKeyboardArrowUp } from "react-icons/md";
 import { useState } from 'react'
 
-function CourseCard({id, name, location, par, distance, slope, handleDelete}) {
+function CourseCard({id, name, location, par, distance, slope, handleDelete, handleEdit}) {
     const [isInfoVisible, setIsinfoVisible] = useState(false)
     
     return (
@@ -23,6 +23,10 @@ function CourseCard({id, name, location, par, distance, slope, handleDelete}) {
                     </div>
                 )}
             </div>
+            <button onClick={
+                () => handleEdit("course", id)} className="edit-btn">
+                    Edit
+            </button>
             <button onClick={() => {
                 handleDelete(id, 'courses')}} className="delete-btn">
                 <MdDeleteForever />

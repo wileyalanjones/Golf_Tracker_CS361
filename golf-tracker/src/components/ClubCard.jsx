@@ -1,7 +1,7 @@
 import "../App.css"
 import { MdDeleteForever } from 'react-icons/md';
 
-function ClubCard({id, type, brand, handleDelete, model=undefined, year=undefined}) {
+function ClubCard({id, type, brand, handleDelete, handleEdit, model=undefined, year=undefined}) {
     return (
         <div className="club-card">
             <div className="club-info">
@@ -12,6 +12,10 @@ function ClubCard({id, type, brand, handleDelete, model=undefined, year=undefine
                     {year && `, ${year}`}
                 </div>
             </div>
+            <button onClick={
+                () => handleEdit("club", id)} className="edit-btn">
+                    Edit
+            </button>
             <button onClick={() => {
                 console.log("ID BEING DELETED: ", id)
                 handleDelete(id, 'clubs')}} className="delete-btn">

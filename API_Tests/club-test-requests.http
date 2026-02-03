@@ -27,3 +27,21 @@ content-type: application/json
 @CLUB_ID = 697d8cb3b4501b24c1857471
 
 DELETE http://localhost:3000/clubs/{{CLUB_ID}} HTTP/1.1
+
+### Request 5: Update a club
+@CLUB_UPDATE_ID = 69818345755693fd308fc871
+
+PUT http://localhost:3000/clubs/{{CLUB_UPDATE_ID}} HTTP/1.1
+content-type: application/json
+
+{
+    "type": "Driver",
+    "brand": "Taylor Made",
+    "model": "Big Bertha",
+    "year": "2026" 
+}
+
+### Requst 5: Get Club By ID
+@CLUB_GET_ID = 69818345755693fd308fc871
+
+GET http://localhost:3000/clubs/{{CLUB_GET_ID}} HTTP/1.1

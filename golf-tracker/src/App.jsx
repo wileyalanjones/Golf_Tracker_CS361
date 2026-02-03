@@ -2,9 +2,7 @@ import './App.css'
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import LoginPage from "./pages/LoginPage.jsx"
 import HomePage from './pages/HomePage.jsx'
-import AddClubPage from './pages/AddClubPage.jsx'
-import AddCoursePage from './pages/AddCoursePage.jsx'
-import AddRoundPage from './pages/AddRoundPage.jsx'
+import ItemFormPage from './pages/AddEditItem.jsx'
 
 function App() {
 
@@ -14,9 +12,8 @@ function App() {
         <Routes>
           <Route path="/" element={<LoginPage />}></Route>
           <Route path="/home" element={<HomePage />}></Route>
-          <Route path='/add-club' element={<AddClubPage />}></Route>
-          <Route path='/add-course' element={<AddCoursePage />}></Route>
-          <Route path='/add-round' element={<AddRoundPage />}></Route>
+          <Route path='/add/:type' element={<ItemFormPage />}></Route>
+          <Route path='/edit/:type/:id' element={<ItemFormPage />}></Route>
         </Routes>
       </Router>
     </div>

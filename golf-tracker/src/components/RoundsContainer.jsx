@@ -1,7 +1,7 @@
 import "../App.css"
 import RoundCard from "./RoundCard"
 
-function RoundsContainer({rounds, handleDelete}) {
+function RoundsContainer({rounds, handleDelete, handleEdit}) {
     return (
         <section className="courses">
             <h2>ROUNDS</h2>
@@ -15,6 +15,7 @@ function RoundsContainer({rounds, handleDelete}) {
                     strokes={round.strokes}
                     score={round.score}
                     handleDelete={handleDelete}
+                    handleEdit={handleEdit}
                 />
             ))}
         </section>

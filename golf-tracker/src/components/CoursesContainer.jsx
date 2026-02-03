@@ -1,7 +1,7 @@
 import "../App.css"
 import CourseCard from "./CourseCard"
 
-function CoursesContainer({courses, handleDelete}) {
+function CoursesContainer({courses, handleDelete, handleEdit}) {
 
     return (
         <section className="courses">
@@ -17,6 +17,7 @@ function CoursesContainer({courses, handleDelete}) {
                     distance={course.distance}
                     slope={course.slope}
                     handleDelete={handleDelete}
+                    handleEdit={handleEdit}
                 />
             ))}
         </section>
