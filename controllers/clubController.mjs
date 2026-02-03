@@ -16,4 +16,16 @@ const deleteClub = async (req, res) => {
     res.status(204).json(clubDeleted);
 }
 
-export { createClub, getClubs, deleteClub }
+const updateClub = async (req, res) => {
+    const id = req.params._id;
+    const updates = {
+        type: req.params.type,
+        brand: req.params.brand,
+        model: req.params.model,
+        year: req.params.year 
+    }
+    const updatedClub = await Clubs.findByIdAndUpdate(id, updates)
+    res.status(200).json(updatedClub)
+}
+
+export { createClub, getClubs, deleteClub, updateClub }

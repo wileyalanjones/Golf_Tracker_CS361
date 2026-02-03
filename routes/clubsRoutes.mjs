@@ -14,4 +14,7 @@ clubRouter.get("/", clubController.getClubs);
 // DELETE CLUBS
 clubRouter.delete("/:id", clubController.deleteClub);
 
+// UPDATE CLUB 
+clubRouter.put("/:id", clubController.updateClub)
+
 export default clubRouter 
