@@ -1,42 +1,345 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  --green: #2dbb2d;
+  --green-light: #9fd38a;
+  --yellow: #fff4c4;
+  --purple: #f7c6ff;
+  --black: #000;
+  --shadow: 4px 4px 0px #000;
+  --radius: 12px;
+  --font-main: "Arial Black", Arial, sans-serif;
+}
+
+/*NAV*/
+.app-nav {
+  background: linear-gradient(#2dbb2d, #26a826);
+  padding: 14px 32px;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+.nav-card {
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-card {
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.plus-link {
+  color: black;
+  text-decoration: none;
+}
+
+/* HOME PAGE */
+.page-title {
   text-align: center;
+  margin-top: 30px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.page-title h1 {
+  font-family: var(--font-main);
+  margin-bottom: 10px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.page-title p {
+  font-weight: bold;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.containers {
+  display: grid;
+  grid-template-columns: 1.1fr 1.5fr 1fr;
+  gap: 40px;
+  padding: 40px 60px;
+}
+
+.column {
+  border: 1px black;
+}
+
+.column-header{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-main);
+  font-size: 20px;
+  margin-bottom: 20px;
 }
 
 .card {
-  padding: 2em;
+  border: 3px solid #000;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 14px 16px;
+  margin-bottom: 18px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.read-the-docs {
-  color: #888;
+.card.club {
+  background: var(--yellow);
+}
+
+.card.round {
+  background: var(--purple);
+  text-align: center;
+}
+
+.card.course {
+  background: var(--green-light);
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.add-button {
+  background: var(--yellow);
+  border: 3px solid #000;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 14px;
+  font-weight: bold;
+  text-align: center;
+  cursor: pointer;
+}
+
+.add-button.purple {
+  background: var(--purple);
+}
+
+.add-button.green {
+  background: var(--green-light);
+}
+
+.course-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon-group {
+  display: flex;
+  gap: 6px;
+}
+
+.icon-btn {
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 4px;
+  padding: 2px 4px;
+  cursor: pointer;
+}
+
+.course-details {
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: normal;
+  display: grid;
+  gap: 4px;
+}
+
+/* Confirm Delete */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 400px;
+}
+
+.modal-content h3 {
+  margin-top: 0;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.btn-confirm {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+
+.btn-confirm:hover {
+  background-color: #c82333;
+}
+
+.btn-cancel {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+
+.btn-cancel:hover {
+  background-color: #5a6268;
+}
+
+/* ADD/EDIT PAGE */
+.form-fieldset {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: var(--yellow);
+  border: 1px solid black;
+  border-radius: 8px;
+}
+
+.form-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: 0 1rem;
+  margin-bottom: 1rem;
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.form-fieldset input,
+.form-fieldset select {
+  display: block;
+  width: 60%;
+  margin: 1rem auto;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.form-fieldset input::placeholder {
+  color: #999;
+}
+
+.form-submit-btn {
+  display: block;
+  margin: 1rem auto;
+  padding: 0.6rem 2rem;
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.form-submit-btn:hover {
+  background-color: #e64a19;
+}
+
+/* LOGIN PAGE */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  background-image: url('/public/golf_background.png');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.login-page h1 {
+  font-family: var(--font-main);
+  font-size: 2rem;
+  margin-bottom: 3rem;
+}
+
+.login-page .app-body {
+  background-color: rgb(150, 150, 150);
+  padding: 2rem 3rem;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.login-page fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.login-page input {
+  width: 300px;
+  padding: 0.8rem 1rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.login-page input::placeholder {
+  color: #666;
+  font-weight: bold;
+}
+
+.login-page button {
+  width: 300px;
+  padding: 0.8rem 2rem;
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.login-page button:hover {
+  background-color: #e64a19;
+}
+
+.login-page p {
+  font-weight: bold;
+  max-width: 500px;
+  line-height: 1.5;
+  background-color: green;
+  color: white;
+  border-radius: 10px;
+  padding: 1rem;
 }

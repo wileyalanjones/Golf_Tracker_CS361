@@ -24,20 +24,19 @@ export default function LoginPage() {
     }
 
     return (
-        <>
-            <div>
-                Welcome to the Golf Tracker App
-            </div>
+        <div className='login-page'>
+            <h1>Welcome to Wiley Golf Tracker</h1>
             <div className='app-body'>
                 <form onSubmit={(e) => { e.preventDefault(); addLogin(); }}>
                     <fieldset>
-                        <input type='email' placeholder='email' value={email} onChange={e => setEmail(e.target.value)}/>
-                        <input type='password' placeholder='password' value={password} onChange={e => setPassword(e.target.value)}/>
+                        <input type='email' placeholder='Email' value={email} onChange={e => setEmail(e.target.value)}/>
+                        <input type='password' placeholder='Password' value={password} onChange={e => setPassword(e.target.value)}/>
                     </fieldset>
                 </form>
                 <button onClick={addLogin}>Login</button>
             </div>
-        </>
+            <p>Track your clubs, courses, rounds, and stats! See your progress and save your favorite courses and rounds</p>
+        </div>
 
     )
 }

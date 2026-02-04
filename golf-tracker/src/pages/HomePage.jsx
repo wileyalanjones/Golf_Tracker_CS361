@@ -4,11 +4,15 @@ import CoursesContainer from '../components/CoursesContainer';
 import RoundsContainer from '../components/RoundsContainer';
 import Navigation from '../components/Navigation';
 import { useNavigate } from 'react-router-dom';
+import ConfirmDialog from '../components/ConfirmDialog';
 
 export default function HomePage() {
+
     const [clubs, setClubs] = useState([]);
     const [courses, setCourses] = useState([]);
     const [rounds, setRounds] = useState([]);
+    const [showConfirm, setShowConfirm] = useState(false);
+    const [pendingDelete, setPendingDelete] = useState(undefined);
 
     const navigate = useNavigate();
 
@@ -53,11 +57,14 @@ export default function HomePage() {
     }
 
     const handleDelete = async (id, endpoint) => {
-        const result = window.confirm(
-            "Are you sure you want to delete? This item will be gone forever."
-        );
+        setPendingDelete({id, endpoint});
+        setShowConfirm(true);
+    }
 
-        if (!result) return;
+    const confirmDelete = async () => {
+        if (!pendingDelete) return;
+
+        const { id, endpoint } = pendingDelete
 
         try {
             const response = await fetch(
@@ -86,6 +93,15 @@ export default function HomePage() {
         catch (err) {
             console.error("Error during delete: ", err)
         }
+        finally {
+            setShowConfirm(false);
+            setPendingDelete(undefined);
+        }
+    }
+
+    const cancelDelete = () => {
+        setShowConfirm(false);
+        setPendingDelete(undefined)
     }
 
     const handleEdit = (type, id) => {
@@ -101,21 +117,34 @@ export default function HomePage() {
     return (
         <>
             <Navigation courses={courses}/>
-            <ClubContainer 
-                clubs={clubs} 
-                handleDelete={handleDelete} 
-                handleEdit={handleEdit}
-                />
-            <RoundsContainer 
-                rounds={rounds} 
-                handleDelete={handleDelete} 
-                handleEdit={handleEdit}
-                />
-            <CoursesContainer 
-                courses={courses} 
-                handleDelete={handleDelete} 
-                handleEdit={handleEdit}
-                />
+            <div className='page-title'>
+                <h1 >HOME PAGE</h1>
+                <p >Welcome to Wiley's Golf Tracker. Enter in your clubs, your courses, and your rounds to track your golf progress!</p>
+            </div>
+            <div className='containers'>
+                <ClubContainer className="column"
+                    clubs={clubs} 
+                    handleDelete={handleDelete} 
+                    handleEdit={handleEdit}
+                    />
+                <RoundsContainer className='column'
+                    rounds={rounds} 
+                    handleDelete={handleDelete} 
+                    handleEdit={handleEdit}
+                    />
+                <CoursesContainer className="column"
+                    courses={courses} 
+                    handleDelete={handleDelete} 
+                    handleEdit={handleEdit}
+                    />
+            </div>
+
+            <ConfirmDialog
+                isOpen={showConfirm}
+                message="Are you sure you want to delete? This item will be gone forever."
+                onConfirm={confirmDelete}
+                onCancel={cancelDelete}
+            />
         </>
     )
 }

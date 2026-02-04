@@ -37,7 +37,7 @@ const updateRound = async (req, res) => {
     const id = req.params.id;
     const updates = {
         date: req.body.date,
-        course: req.body.course._id,
+        course: req.body.course,
         strokes: req.body.strokes,
         score: req.body.score
     }

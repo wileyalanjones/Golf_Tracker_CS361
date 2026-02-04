@@ -1,5 +1,5 @@
 import "../App.css"
-import { MdDeleteForever } from 'react-icons/md';
+import { MdDeleteForever, MdModeEdit } from 'react-icons/md';
 import { MdKeyboardArrowDown } from "react-icons/md";
 import { MdKeyboardArrowUp } from "react-icons/md";
 import { useState } from 'react'
@@ -8,29 +8,35 @@ function CourseCard({id, name, location, par, distance, slope, handleDelete, han
     const [isInfoVisible, setIsinfoVisible] = useState(false)
     
     return (
-        <div className="course-card">
-            <div className="course-info">
+        <div className="card course">
+            <div className="course-header">
                 <strong>{name}</strong>
-                <button onClick={() => setIsinfoVisible(!isInfoVisible)}>
-                    {isInfoVisible ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown />}
-                </button>
-                {isInfoVisible && (
-                    <div>
-                        <div>{location}</div>
-                        <div>{par}</div>
-                        <div>{distance}</div>
-                        <div>{slope}</div>
-                    </div>
-                )}
+                <div className="icon-group">
+                    <button onClick={
+                        () => handleEdit("course", id)} className="icon-btn">
+                        <MdModeEdit />
+                    </button>
+                    <button onClick={() => {
+                        handleDelete(id, 'courses')}} className="icon-btn">
+                        <MdDeleteForever />
+                    </button>
+                    <button onClick={() => setIsinfoVisible(!isInfoVisible)} className="icon-btn">
+                        {isInfoVisible ? <MdKeyboardArrowUp /> : <MdKeyboardArrowDown />}
+                    </button>
+                </div>
             </div>
-            <button onClick={
-                () => handleEdit("course", id)} className="edit-btn">
-                    Edit
-            </button>
-            <button onClick={() => {
-                handleDelete(id, 'courses')}} className="delete-btn">
-                <MdDeleteForever />
-            </button>
+            <div>
+                {isInfoVisible && (
+                    <div className="course-details">
+                        <div>Location: {location}</div>
+                        <div>Par: {par}</div>
+                        <div>Distance: {distance} Yards</div>
+                        <div>Slope: {slope}</div>
+                    </div>  
+                )}
+
+            </div>
+
         </div>
     )
 }

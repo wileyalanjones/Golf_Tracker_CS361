@@ -1,14 +1,17 @@
 import "../App.css"
 import CourseCard from "./CourseCard"
+import { Link } from 'react-router-dom'
 
 function CoursesContainer({courses, handleDelete, handleEdit}) {
 
     return (
         <section className="courses">
-            <h2>COURSES</h2>
-
+            <h2 className="column-header">COURSES 
+                <Link to="/add/course" className="plus-link">+</Link> 
+            </h2>
+            
             {courses.map((course) => (
-                <CourseCard
+                <CourseCard 
                     key={course._id}
                     id={course._id}
                     name={course.name}
@@ -20,6 +23,9 @@ function CoursesContainer({courses, handleDelete, handleEdit}) {
                     handleEdit={handleEdit}
                 />
             ))}
+            <div className="add-button green">
+               <Link to="/add/course" className='nav-card'>Add Course +</Link>
+            </div>
         </section>
     )
 }

@@ -1,13 +1,16 @@
 import "../App.css"
 import ClubCard from "./ClubCard"
+import { Link } from 'react-router-dom'
 
 function ClubContainer({clubs, handleDelete, handleEdit}) {
     return (
         <section className="clubs">
-            <h2>CLUBS</h2>
+            <h2 className="column-header">CLUBS
+                <Link to="/add/clubs" className="plus-link">+</Link> 
+            </h2>
 
             {clubs.map((club) => (
-                <ClubCard
+                <ClubCard 
                     key={club._id}
                     id={club._id}
                     type={club.type}
@@ -18,6 +21,9 @@ function ClubContainer({clubs, handleDelete, handleEdit}) {
                     handleEdit={handleEdit}
                 />
             ))}
+            <div className="add-button">
+               <Link to="/add/club" className='nav-card'>Add Club +</Link>
+            </div>
         </section>
     )
 }

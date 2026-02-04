@@ -1,26 +1,32 @@
 import "../App.css"
-import { MdDeleteForever } from 'react-icons/md';
+import { MdDeleteForever, MdModeEdit } from 'react-icons/md';
 
 function ClubCard({id, type, brand, handleDelete, handleEdit, model=undefined, year=undefined}) {
     return (
-        <div className="club-card">
-            <div className="club-info">
-                <strong>{type}</strong>
-                <div className="club-brand">
-                    {brand}
-                    {model && `, ${model}`}
-                    {year && `, ${year}`}
+        <div className="card club">
+            <div className="card-header">
+                <div className="club-info">
+                    <strong>{type}</strong>
+                    <div className="club-brand">
+                        {brand}
+                        {model && `, ${model}`}
+                        {year && `, ${year}`}
+                    </div>
                 </div>
             </div>
-            <button onClick={
-                () => handleEdit("club", id)} className="edit-btn">
-                    Edit
-            </button>
-            <button onClick={() => {
-                console.log("ID BEING DELETED: ", id)
-                handleDelete(id, 'clubs')}} className="delete-btn">
-                <MdDeleteForever />
-            </button>
+            <div className="icon-group">
+                <button
+                    onClick={() => handleEdit("club", id)}
+                    className="edit-btn">
+                    <MdModeEdit />
+                </button>
+
+                <button
+                    onClick={() => handleDelete(id, "clubs")}
+                    className="delete-btn">
+                    <MdDeleteForever />
+                </button>
+            </div>
         </div>
     )
 }

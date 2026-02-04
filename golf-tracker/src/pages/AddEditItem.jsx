@@ -62,50 +62,53 @@ function ItemFormPage() {
 
     return (
         <>
-        <Navigation />
-        <fieldset>
-            <legend>{isEdit ? `Edit ${config.title}` : `Add ${config.title}`}</legend>
+            <Navigation />
+            <div className='form-container'>
+                <h1 className="form-title">{isEdit ? `Edit ${config.title}` : `Add ${config.title}`}</h1>
+                <fieldset className="form-fieldset">
+                    {config.fields.map(field => {
+                    if (field.type === "select") {
+                        return (
+                        <div>  
+                            <select
+                                key={field.name}
+                                value={formData[field.name] || ""}
+                                onChange={e => handleChange(field.name, e.target.value)}
+                            >
+                                <option value="">Select</option>
+                                {courses.map(c => (
+                                <option key={c._id} value={c._id}>
+                                    {c.name}
+                                </option>
+                                ))}
+                            </select>
+                        </div>
+                        );
+                    }
 
-            {config.fields.map(field => {
-            if (field.type === "select") {
-                return (
-                <select
-                    key={field.name}
-                    value={formData[field.name] || ""}
-                    onChange={e => handleChange(field.name, e.target.value)}
-                >
-                    <option value="">Select</option>
-                    {courses.map(c => (
-                    <option key={c._id} value={c._id}>
-                        {c.name}
-                    </option>
-                    ))}
-                </select>
-                );
-            }
-
-            return (
-                <input
-                key={field.name}
-                type={field.type}
-                value={formData[field.name] ?? ""}
-                placeholder={field.label}
-                onChange={e =>
-                    handleChange(
-                    field.name,
-                    field.type === "number"
-                        ? e.target.valueAsNumber
-                        : e.target.value
-                    )
-                }
-                />
-            );
-            })}
-        </fieldset>
-
-        <button onClick={handleSubmit}>
-            {isEdit ? "Update" : "Create"}
-        </button>
+                    return (
+                        <input
+                        key={field.name}
+                        type={field.type}
+                        value={formData[field.name] ?? ""}
+                        placeholder={field.label}
+                        onChange={e =>
+                            handleChange(
+                            field.name,
+                            field.type === "number"
+                                ? e.target.valueAsNumber
+                                : e.target.value
+                            )
+                        }
+                        />
+                    );
+                    })}
+                </fieldset>
+            </div>
+            <button className="form-submit-btn" onClick={handleSubmit} >
+                {isEdit ? "UPDATE" : "CREATE"}
+            </button>
+            
         </>
     );
 }
