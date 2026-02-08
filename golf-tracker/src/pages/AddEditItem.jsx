@@ -13,6 +13,8 @@ function ItemFormPage() {
     const [formData, setFormData] = useState({});
     const [courses, setCourses] = useState([]);
 
+    const [isHelpVisible, setIsHelpVisible] = useState(false)
+
     useEffect(() => {
         if (type === "round") {
             const getCourses = async () => {
@@ -30,7 +32,18 @@ function ItemFormPage() {
         const loadItem = async () => {
             const response = await fetch(config.getEndpoint(id));
             const item = await response.json();
-            setFormData(item)
+            if (type === 'round') {
+                setFormData({
+                ...item, 
+                course: item.course._id,
+                date: item.date 
+                    ? new Date(item.date).toISOString().split("T")[0]
+                    : ""
+            })
+            }
+            else {
+                setFormData(item)
+            }
         } 
         loadItem();
     }, [isEdit, id, config]);
@@ -65,7 +78,8 @@ function ItemFormPage() {
             <Navigation />
             <div className='form-container'>
                 <h1 className="form-title">{isEdit ? `Edit ${config.title}` : `Add ${config.title}`}</h1>
-                <fieldset className="form-fieldset">
+                <fieldset className="form-fieldset" 
+                    style={{backgroundColor: config.backgroundColor}}>
                     {config.fields.map(field => {
                     if (field.type === "select") {
                         return (
@@ -103,12 +117,25 @@ function ItemFormPage() {
                         />
                     );
                     })}
+                    <button onClick={() => setIsHelpVisible(!isHelpVisible)} className="help-btn">
+                        {isHelpVisible ? "Hide Help" : "Need Help?"}                    
+                    </button>
                 </fieldset>
             </div>
             <button className="form-submit-btn" onClick={handleSubmit} >
                 {isEdit ? "UPDATE" : "CREATE"}
             </button>
-            
+                        <div className="help-info">
+                {isHelpVisible && (
+                    <div>
+                        {config.help.map((help, i) => {
+                            return (
+                                <p key={i}>{help}</p>
+                            );
+                        })}
+                    </div>
+                )}
+            </div>
         </>
     );
 }

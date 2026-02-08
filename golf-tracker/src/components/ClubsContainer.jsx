@@ -6,7 +6,7 @@ function ClubContainer({clubs, handleDelete, handleEdit}) {
     return (
         <section className="clubs">
             <h2 className="column-header">CLUBS
-                <Link to="/add/clubs" className="plus-link">+</Link> 
+                <Link to="/add/club" className="plus-link">+</Link> 
             </h2>
 
             {clubs.map((club) => (
