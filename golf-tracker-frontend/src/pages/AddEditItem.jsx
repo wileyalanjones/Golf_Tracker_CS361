@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Navigation from "../components/Navigation";
 import ADD_ITEM_CONFIG from "../config/addItemConfig";
+import { states } from "../config/utils.js"
 
 function ItemFormPage() {
     const { type, id } = useParams(); 
@@ -71,6 +72,7 @@ function ItemFormPage() {
     }
 
     navigate("/home");
+
   };
 
     return (
@@ -81,7 +83,7 @@ function ItemFormPage() {
                 <fieldset className="form-fieldset" 
                     style={{backgroundColor: config.backgroundColor}}>
                     {config.fields.map(field => {
-                    if (field.type === "select") {
+                    if (field.type === "select" && field.label === "Course") {
                         return (
                         <div>  
                             <select
@@ -99,20 +101,38 @@ function ItemFormPage() {
                         </div>
                         );
                     }
+                    if (field.type === "select" && field.label === "State (Abbr)") {
+                        return (
+                        <div>
+                            <select
+                                key={field.name}
+                                value={formData[field.name] || ""}
+                                onChange={e => handleChange(field.name, e.target.value)}
+                            >
+                                <option value="">Select a state</option>
+                                {states.map(state => (
+                                <option key={state} value={state}>
+                                    {state}
+                                </option>
+                                ))}
+                            </select>
+                        </div>
+                        )
+                    }
 
                     return (
                         <input
-                        key={field.name}
-                        type={field.type}
-                        value={formData[field.name] ?? ""}
-                        placeholder={field.label}
-                        onChange={e =>
-                            handleChange(
-                            field.name,
-                            field.type === "number"
-                                ? e.target.valueAsNumber
-                                : e.target.value
-                            )
+                            key={field.name}
+                            type={field.type}
+                            value={formData[field.name] ?? ""}
+                            placeholder={field.label}
+                            onChange={e =>
+                                handleChange(
+                                field.name,
+                                field.type === "number"
+                                    ? e.target.valueAsNumber
+                                    : e.target.value
+                                )
                         }
                         />
                     );

@@ -27,7 +27,8 @@ const ADD_ITEM_CONFIG = {
     putEndpoint: id => `http://localhost:3000/courses/${id}`,
     fields: [
       { name: "name", type: "text", label: "Name" },
-      { name: "location", type: "text", label: "Location" },
+      { name: "city", type: "text", label: "City" },
+      { name: "state", type: "select", label: "State (Abbr)"},
       { name: "par", type: "number", label: "Par" },
       { name: "distance", type: "number", label: "Distance" },
       { name: "slope", type: "number", label: "Slope" }

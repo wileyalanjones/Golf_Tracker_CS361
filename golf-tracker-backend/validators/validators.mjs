@@ -21,7 +21,8 @@ const validateClub = [
 
 const validateCourse = [
     body('name').notEmpty().withMessage('Name is required'),
-    body('location').notEmpty().withMessage('location is required'),
+    body('city').notEmpty().withMessage('city is required'),
+    body('state').notEmpty().withMessage('state is required'),
     body('par').isInt({min: 1}).withMessage("Par must be a positive integer"),
     body('distance').isInt({min: 1}).withMessage('Distance must be a postive integer'),
     body('slope').isInt({min: 1}).withMessage('Slope Must be a positive integer'),

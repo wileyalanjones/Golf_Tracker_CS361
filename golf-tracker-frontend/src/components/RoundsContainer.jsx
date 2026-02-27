@@ -17,6 +17,7 @@ function RoundsContainer({rounds, handleDelete, handleEdit}) {
                     course={round.course}
                     strokes={round.strokes}
                     score={round.score}
+                    weather={round.weather}
                     handleDelete={handleDelete}
                     handleEdit={handleEdit}
                 />

@@ -4,7 +4,8 @@ content-type: application/json
 
 {
     "name": "Augusta National",
-    "location": "Augusta, Georgia",
+    "city": "Augusta",
+    "state": "GE",
     "par": 72,
     "distance": 7445,
     "slope": 140    

@@ -15,7 +15,8 @@ function CoursesContainer({courses, handleDelete, handleEdit}) {
                     key={course._id}
                     id={course._id}
                     name={course.name}
-                    location={course.location}
+                    city={course.city}
+                    state={course.state}
                     par={course.par}
                     distance={course.distance}
                     slope={course.slope}

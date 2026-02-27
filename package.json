@@ -7,7 +7,8 @@
     "express-validator": "^7.3.1",
     "mongodb": "^7.0.0",
     "mongoose": "^9.1.5",
-    "mongoose-id-validator": "^0.6.0"
+    "mongoose-id-validator": "^0.6.0",
+    "us-state-converter": "^1.0.8"
   },
   "devDependencies": {
     "nodemon": "^3.1.11"

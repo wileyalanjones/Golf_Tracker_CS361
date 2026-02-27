@@ -22,7 +22,6 @@ export default function HomePage() {
             "http://localhost:3000/clubs"
         )
             const clubsList = await response.json();
-            console.log(clubsList)
             setClubs(clubsList)
         }
         catch (err) {

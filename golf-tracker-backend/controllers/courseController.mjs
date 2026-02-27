@@ -25,7 +25,8 @@ const updateCourse = async (req, res) => {
     const id = req.params.id;
     const updates = {
         name: req.body.name,
-        location: req.body.location,
+        city: req.body.city,
+        state: req.body.state,
         par: req.body.par,
         distance: req.body.distance,
         slope: req.body.slope

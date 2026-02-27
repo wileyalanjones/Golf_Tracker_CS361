@@ -13,7 +13,9 @@ const createRound = async (req, res) => {
         return res.status(400).json({ error: "Score must equal strokes minus par"})
     }
 
-    const round = new Rounds({ date, course: checkCourse._id, strokes, score});
+    const weather = await getWeather(checkCourse, date);
+
+    const round = new Rounds({ date, course: checkCourse._id, strokes, score, weather});
     const savedRound = await round.save();
     res.status(201).json(savedRound)
 };
@@ -45,5 +47,28 @@ const updateRound = async (req, res) => {
     res.status(200).json(updatedRound)
 }
 
+const getWeather = async (checkCourse, date) => {
+    
+    const newDate = new Date(date).toISOString().slice(0,10)
+    const body = { 
+        "lat": "", 
+        "long": "", 
+        "city": checkCourse.city, 
+        "state": checkCourse.state,
+        "date": newDate,
+        "zipcode": "",
+    }
+
+    const response = await fetch(
+        "http://localhost:3634/date", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body)
+    });
+
+    const data = await response.json()
+    return data;
+
+}
 
 export { createRound, getRounds, getRoundByID, deleteRound, updateRound }

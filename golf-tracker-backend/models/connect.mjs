@@ -1,4 +1,4 @@
-import mongoose from "mongoose"
+import mongoose from "mongoose";
 import "dotenv/config";
 
 const CONNECT_STRING = process.env.MONGODB_CONNECT_STRING

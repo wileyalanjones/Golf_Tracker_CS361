@@ -4,7 +4,7 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 import { MdKeyboardArrowUp } from "react-icons/md";
 import { useState } from 'react'
 
-function CourseCard({id, name, location, par, distance, slope, handleDelete, handleEdit}) {
+function CourseCard({id, name, city, state, par, distance, slope, handleDelete, handleEdit}) {
     const [isInfoVisible, setIsinfoVisible] = useState(false)
     
     return (
@@ -28,7 +28,8 @@ function CourseCard({id, name, location, par, distance, slope, handleDelete, han
             <div>
                 {isInfoVisible && (
                     <div className="course-details">
-                        <div>Location: {location}</div>
+                        <div>City: {city}</div>
+                        <div>State: {state}</div>
                         <div>Par: {par}</div>
                         <div>Distance: {distance} Yards</div>
                         <div>Slope: {slope}</div>
