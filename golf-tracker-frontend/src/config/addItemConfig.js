@@ -6,7 +6,7 @@ const ADD_ITEM_CONFIG = {
     postEndpoint: "http://localhost:3000/rounds",
     putEndpoint: id => `http://localhost:3000/rounds/${id}`,
     fields: [
-      { name: "date", type: "date", label: "Date" },
+      { name: "date", type: "datetime-local", label: "Date" },
       { name: "course", type: "select", label: "Course" },
       { name: "strokes", type: "number", label: "Strokes" },
       { name: "score", type: "number", label: "Score" }

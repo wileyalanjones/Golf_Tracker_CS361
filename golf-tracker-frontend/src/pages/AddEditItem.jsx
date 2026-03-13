@@ -103,7 +103,7 @@ function ItemFormPage() {
                     }
                     if (field.type === "select" && field.label === "State (Abbr)") {
                         return (
-                        <div>
+                        <div key={field.name}>
                             <select
                                 key={field.name}
                                 value={formData[field.name] || ""}
